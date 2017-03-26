@@ -34,3 +34,28 @@ def search(y1, y2):
     matches = tree.xpath('//p[@class="term"]/text()')
 
     return matches[0]
+
+
+def collect():
+    """
+    Writes a dictionary to collect.txt. The dictionary is of the form {YEAR: [i0, i1, i2], [...]} where:
+        i0 is number of matches found by search(YEAR, YEAR).
+        i1 is number of different papers that appear in i1.
+        i2 is number of papers in circulation in the USA in YEAR.
+
+    """
+
+    d_results = {}
+
+    for i in range(1836, 1924):
+        matches = search(i, i)
+        if matches:
+            numbermatches = [int(s) for s in matches[0].split() if s.isdigit()]
+            d_results[i] = [numbermatches[0], len(set(news(i, i))), papers(i)]
+            print(i)
+        else:
+            d_results[i] = 0
+
+    with open('collect.txt', 'w') as outfile:
+        outfile.write(str(d_results))
+    print('Done!')
