@@ -1,6 +1,7 @@
 from lxml import html
 import requests
 import re
+import ast
 
 
 url1 = "http://chroniclingamerica.loc.gov/search/pages/results/?date1="
@@ -59,3 +60,28 @@ def collect():
     with open('collect.txt', 'w') as outfile:
         outfile.write(str(d_results))
     print('Done!')
+
+
+def collectJSON():
+    """
+    Turns the data written to collect.txt by collect() into JSON format.
+    Writes output to collect.json.
+
+    """
+
+    with open('collect.txt', 'r') as infile:
+        data = ast.literal_eval(infile.read())
+
+        d = list(data.keys())
+
+    with open('collect.json', 'a') as outfile:
+
+        outfile.write('Data = [\n')
+
+        for i in range(len(d)):
+            s = '{{ Date: "{}", Categories: [{{ Name: "T# of papers", Value: {} }}], LineCategory: [{{ Name: "Mentions", Value: {} }},{{ Name: "# of papers", Value: {} }}] }}, \n'
+            s = s.format(str(d[i]), str(data[d[i]][3]), str(data[d[i]][0]), str(data[d[i]][2]))
+            outfile.write(s)
+            print(d[i])
+
+        outfile.write('\n]')
