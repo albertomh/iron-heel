@@ -52,7 +52,7 @@ def collect():
         matches = search(i, i)
         if matches:
             numbermatches = [int(s) for s in matches[0].split() if s.isdigit()]
-            d_results[i] = [numbermatches[0], len(set(news(i, i))), papers(i)]
+            d_results[i] = [numbermatches[0], len(set(news(i, i))), how_many_papers(i)]
             print(i)
         else:
             d_results[i] = 0
@@ -108,6 +108,11 @@ def newspaper_dates():
 
 
 def how_many_papers(year):
+    """
+    Returns an integer which is the number of papers in the USA in
+    a given year.
+
+    """
 
     with open('newspapers_digits.txt', 'r', encoding="utf-8") as infile:
         data = infile.read()
