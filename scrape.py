@@ -87,11 +87,21 @@ def collectJSON():
         outfile.write('\n]')
 
 
-def numbers():
+def newspaper_dates():
+    """
+    Writes a txt file of the form [('START_YEAR', 'END_YEAR'), (...)] where each tuple
+    is the start and end year for all the newspapers found in newspapers.txt.
+
+    newspapers.txt is a the source code for http://chroniclingamerica.loc.gov/newspapers,
+    a table with information regarding all 2191 newpapers in the archive.
+
+    The function outputs data to newspapers_digits.txt, which is then used by papers().
+
+    """
 
     with open('newspapers.txt', 'r', encoding="utf-8") as infile:
         data = infile.read()
         s = re.findall('(\d\d\d\d)-(\d\d\d\d)', str(data))
 
-        with open('newspapers_digits.txt', 'w') as outfile:
+        with open('newspaper_dates.txt', 'w') as outfile:
             outfile.write(str(s))
