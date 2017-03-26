@@ -85,3 +85,13 @@ def collectJSON():
             print(d[i])
 
         outfile.write('\n]')
+
+
+def numbers():
+
+    with open('newspapers.txt', 'r', encoding="utf-8") as infile:
+        data = infile.read()
+        s = re.findall('(\d\d\d\d)-(\d\d\d\d)', str(data))
+
+        with open('newspapers_digits.txt', 'w') as outfile:
+            outfile.write(str(s))
