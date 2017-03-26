@@ -105,3 +105,17 @@ def newspaper_dates():
 
         with open('newspaper_dates.txt', 'w') as outfile:
             outfile.write(str(s))
+
+
+def how_many_papers(year):
+
+    with open('newspapers_digits.txt', 'r', encoding="utf-8") as infile:
+        data = infile.read()
+        data = ast.literal_eval(data)
+
+    count = 0
+    for i in range(len(data)):
+        if int(data[i][0]) <= year <= int(data[i][1]):
+            count += 1
+
+    return count
