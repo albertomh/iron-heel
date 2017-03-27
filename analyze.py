@@ -9,6 +9,16 @@ def read():
     """
 
     with open('tih-data.json') as infile:
-        parsed_json = json.load(infile)
+        parsed_json = json.load(infile)["data"]
 
         return parsed_json
+
+
+def countcat():
+
+    l_cat = []
+
+    for i in range(0, len(read()['data'])):
+        l_cat.append(read()['data'][str(i)]['cat'])
+
+    return l_cat
