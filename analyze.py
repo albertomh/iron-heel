@@ -30,6 +30,14 @@ def countcat():
 
 
 def placefinder():
+    """
+    Returns a Counter and a Set. The Counter is of the form C({CITY: X, [...]})
+    for each city in the dataset, where X is the number of mentions of Iron Heel in papers
+    published in the city.
+
+    The Set lists the state codes for states in which these papers appeared.
+
+    """
 
     data = read()['data']
     l_city = []
