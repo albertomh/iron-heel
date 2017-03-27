@@ -15,6 +15,10 @@ def read():
 
 
 def countcat():
+    """
+    Returns a list of the category tags found in the data.
+
+    """
 
     l_cat = []
 
