@@ -50,6 +50,7 @@ def placefinder():
     print(Counter(l_city), '\n' * 2, set(l_state))
 
 
+def by_year():
     """
     Returns a Counter of the type C({YEAR: X}) for all years where X is
     the number of times The Iron Heel was mentioned in a year.
@@ -63,3 +64,15 @@ def placefinder():
         l_years.append(data[str(i)]['date'][0:4])
 
     return Counter(l_years)
+
+
+def by_cat(y1, y2):
+
+    data = read()['data']
+    l_cat = []
+
+    for i in range(0, len(data)):
+        if int(data[str(i)]['date'][0:4]) in range(y1, y2):
+            l_cat.append(data[str(i)]['cat'])
+
+    return Counter(l_cat)
