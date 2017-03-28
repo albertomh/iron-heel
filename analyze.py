@@ -67,6 +67,11 @@ def by_year():
 
 
 def by_cat(y1, y2):
+    """
+    Returns a Counter of the form C({CAT: X, [...]}) where CAT is a category label and X
+    is the number of times the category label appears between the years y1, y2.
+
+    """
 
     data = read()['data']
     l_cat = []
