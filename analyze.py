@@ -81,3 +81,12 @@ def by_cat(y1, y2):
             l_cat.append(data[str(i)]['cat'])
 
     return Counter(l_cat)
+
+
+def sentiment():
+
+    data = read()
+
+    with open('sentiment.csv', 'a') as outfile:
+
+        outfile.write('Item,Category,Year,Sentiment\n')
