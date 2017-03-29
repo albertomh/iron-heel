@@ -1,5 +1,8 @@
 import json
 from collections import Counter
+import indicoio
+
+indicoio.config.api_key = '$YOUR_API_KEY'
 
 
 def read():
