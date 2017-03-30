@@ -109,3 +109,8 @@ def sentiment():
             elif s4 < 50:
                 s4 = s4 - 100
             s4 = int(round(s4, 0))
+
+            s = "{},{},{},{}".format(s1, s2, s3, s4)
+
+            outfile.write("{}{}".format(s, '\n'))
+            print("{}    {}".format(s1, s4))
