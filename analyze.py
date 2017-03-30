@@ -93,3 +93,19 @@ def sentiment():
     with open('sentiment.csv', 'a') as outfile:
 
         outfile.write('Item,Category,Year,Sentiment\n')
+
+        for i in range(len(data)):
+            # Item in the format X: YYYY/MM/DD
+            s1 = "{}{}{}".format(i + 1, ": ", data[str(i)]["date"])
+            # Category e.g. Opinion, Advert, etc.
+            s2 = data[str(i)]["cat"]
+            # Year
+            s3 = data[str(i)]["date"][0:4]
+            # Sentiment
+            s4 = indicoio.sentiment_hq(data[str(i)]["article"]["text"])
+            s4 = s4 * 100
+            if s4 > 50:
+                pass
+            elif s4 < 50:
+                s4 = s4 - 100
+            s4 = int(round(s4, 0))
