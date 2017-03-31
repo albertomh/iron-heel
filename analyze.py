@@ -87,6 +87,18 @@ def by_cat(y1, y2):
 
 
 def sentiment():
+    """
+    Uses indico.io's Sentiment Analysis API to analyse each text in tih-data.json and
+    assign it a sentiment value.
+
+    Writes a csv file of the form:
+        Item,Category,Year,Sentiment
+        X: YYYY/MM/DD,$category,YYYY,sentiment_score
+
+    Where: sentiment_score is an integer between -100 and 100.
+           and category has been previously manually assigned in tih-data.json.
+
+    """
 
     data = read()
 
